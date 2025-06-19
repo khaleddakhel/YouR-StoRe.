@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -7,8 +8,7 @@
     body { font-family: Arial, sans-serif; background-color: white; direction: rtl; margin: 0; padding: 0; text-align: center; }
     .container { max-width: 100%; margin: auto; padding: 10px; background: linear-gradient(#474a50, white); border-radius: 2px; }
     .product-image { display: flex; width: 90%; height: auto; border-radius: 8px; padding-bottom: 10px; }
-    .product-title { font-size: 24px; margin-top: 20px; color: white; padding: 10px; }
-    .product-description { margin-top: 10px; font-size: 2vw; background-color: white; padding: 10px; border-radius: 8px; text-align: right; }
+    .product-description { margin-top: 10px; font-size: 4vw; background-color: white; padding: 10px; border-radius: 8px; text-align: right; }
     .product-price { background-color: lightyellow; font-size: 20px; color: black; margin-top: 10px; padding: 5px 10px; border-radius: 5px; display: inline-block; }
     .product-price1 { font-size: 18px; color: gray; text-decoration: line-through; }
     .request { background-color: white; border: 2px solid orange; margin-bottom: 15px; }
@@ -27,7 +27,7 @@
   <img src="Photo/Fan2.jpeg.jpg" alt="مروحة كهربائية محمولة" class="product-image">
 
   <div class="request">
-    <form id="orderForm" onsubmit="sendWhatsAppMessage(event)">
+    <form id="orderForm">
       <input type="text" id="fullName" placeholder="👤 الاسم بالكامل" required>
       <input type="tel" id="phone" placeholder="📞 رقم الهاتف" required>
       <select id="wilaya" required>
@@ -63,76 +63,74 @@
 <p class="product-price">السعر: 3200 دج</p>
 
 <script>
-  const pricePerItem = 3200;
-  let quantity = 1;
+  document.addEventListener("DOMContentLoaded", function () {
+    const pricePerItem = 3200;
+    let quantity = 1;
 
-  const shippingPrices = {
-    "أدرار": [1400, 1000], "الشلف": [450, 800], "الأغواط": [750, 450],
-    "أم البواقي": [850, 450], "باتنة": [850, 450], "بجاية": [850, 450],
-    "بسكرة": [850, 450], "بشار": [1200, 700], "البليدة": [850, 450],
-    "البويرة": [850, 450], "تمنراست": [1800, 900], "تبسة": [850, 450],
-    "تلمسان": [850, 450], "تيارت": [850, 450], "تيزي وزو": [850, 450],
-    "الجزائر العاصمة": [700, 450], "الجلفة": [400, 250], "جيجل": [850, 450],
-    "سطيف": [850, 450], "سعيدة": [850, 450], "سكيكدة": [850, 450],
-    "سيدي بلعباس": [850, 450], "عنابة": [850, 450], "قالمة": [850, 450],
-    "قسنطينة": [850, 450], "المدية": [850, 450], "مستغانم": [850, 450],
-    "المسيلة": [850, 450], "معسكر": [850, 450], "ورقلة": [900, 450],
-    "وهران": [850, 450], "البيض": [1000, 450], "إليزي": [2000, 1200],
-    "برج بوعريريج": [850, 450], "بومرداس": [800, 450], "الطارف": [850, 450],
-    "تندوف": [1650, 1200], "تيسمسيلت": [800, 450], "الوادي": [900, 500],
-    "خنشلة": [850, 450], "سوق أهراس": [850, 450], "تيبازة": [850, 450],
-    "ميلة": [850, 450], "عين الدفلى": [850, 450], "النعامة": [1000, 500],
-    "عين تموشنت": [850, 450], "غرداية": [850, 450], "غليزان": [850, 450],
-    "تيميمون": [1650, 800], "برج باجي مختار": [1600, 900], "أولاد جلال": [850, 450],
-    "بني عباس": [1300, 700], "عين صالح": [1650, 900], "تقرت": [900, 450],
-    "جانت": [1800, 1200], "المغير": [900, 500], "المنيعة": [1000, 600],
-    "عين قزام": [1700, 1000]
-  };
+    const shippingPrices = {
+      "أدرار": [1400, 1000], "الشلف": [450, 800], "الأغواط": [750, 450], "أم البواقي": [850, 450],
+      "باتنة": [850, 450], "بجاية": [850, 450], "بسكرة": [850, 450], "بشار": [1200, 700],
+      "البليدة": [850, 450], "البويرة": [850, 450], "تمنراست": [1800, 900], "تبسة": [850, 450],
+      "تلمسان": [850, 450], "تيارت": [850, 450], "تيزي وزو": [850, 450], "الجزائر العاصمة": [700, 450],
+      "الجلفة": [400, 250], "جيجل": [850, 450], "سطيف": [850, 450], "سعيدة": [850, 450],
+      "سكيكدة": [850, 450], "سيدي بلعباس": [850, 450], "عنابة": [850, 450], "قالمة": [850, 450],
+      "قسنطينة": [850, 450], "المدية": [850, 450], "مستغانم": [850, 450], "المسيلة": [850, 450],
+      "معسكر": [850, 450], "ورقلة": [900, 450], "وهران": [850, 450], "البيض": [1000, 450],
+      "إليزي": [2000, 1200], "برج بوعريريج": [850, 450], "بومرداس": [800, 450], "الطارف": [850, 450],
+      "تندوف": [1650, 1200], "تيسمسيلت": [800, 450], "الوادي": [900, 500], "خنشلة": [850, 450],
+      "سوق أهراس": [850, 450], "تيبازة": [850, 450], "ميلة": [850, 450], "عين الدفلى": [850, 450],
+      "النعامة": [1000, 500], "عين تموشنت": [850, 450], "غرداية": [850, 450], "غليزان": [850, 450],
+      "تيميمون": [1650, 800], "برج باجي مختار": [1600, 900], "أولاد جلال": [850, 450], "بني عباس": [1300, 700],
+      "عين صالح": [1650, 900], "تقرت": [900, 450], "جانت": [1800, 1200], "المغير": [900, 500],
+      "المنيعة": [1000, 600], "عين قزام": [1700, 1000]
+    };
 
-  const wilayaSelect = document.getElementById("wilaya");
-  for (let wilaya in shippingPrices) {
-    let option = document.createElement("option");
-    option.text = wilaya;
-    option.value = wilaya;
-    wilayaSelect.add(option);
-  }
+    const wilayaSelect = document.getElementById("wilaya");
+    for (let wilaya in shippingPrices) {
+      let option = document.createElement("option");
+      option.text = wilaya;
+      option.value = wilaya;
+      wilayaSelect.add(option);
+    }
 
-  function updateQuantity(change) {
-    quantity += change;
-    if (quantity < 1) quantity = 1;
-    document.getElementById("quantity").textContent = quantity;
-    document.getElementById("summaryQty").textContent = quantity;
-    updatePrice();
-  }
+    function updateQuantity(change) {
+      quantity += change;
+      if (quantity < 1) quantity = 1;
+      document.getElementById("quantity").textContent = quantity;
+      document.getElementById("summaryQty").textContent = quantity;
+      updatePrice();
+    }
 
-  function updatePrice() {
-    const wilaya = document.getElementById("wilaya").value;
-    const deliveryType = document.getElementById("deliveryType").value;
-    const shipping = shippingPrices[wilaya]?.[deliveryType === "home" ? 0 : 1] || 0;
-    const total = quantity * pricePerItem + shipping;
-    document.getElementById("shipping").textContent = shipping;
-    document.getElementById("totalPrice").textContent = total;
-  }
+    function updatePrice() {
+      const wilaya = document.getElementById("wilaya").value;
+      const deliveryType = document.getElementById("deliveryType").value;
+      const shipping = shippingPrices[wilaya]?.[deliveryType === "home" ? 0 : 1] || 0;
+      const total = quantity * pricePerItem + shipping;
+      document.getElementById("shipping").textContent = shipping;
+      document.getElementById("totalPrice").textContent = total;
+    }
 
-  function sendWhatsAppMessage(e) {
-    e.preventDefault();
+    function sendWhatsAppMessage(e) {
+      e.preventDefault();
+      const name = document.getElementById("fullName").value;
+      const phone = document.getElementById("phone").value;
+      const wilaya = document.getElementById("wilaya").value;
+      const city = document.getElementById("city").value;
+      const delivery = document.getElementById("deliveryType").value === "home" ? "إلى المنزل" : "إلى المكتب";
+      const shipping = shippingPrices[wilaya]?.[delivery === "إلى المنزل" ? 0 : 1] || 0;
+      const total = quantity * pricePerItem + shipping;
 
-    const name = document.getElementById("fullName").value;
-    const phone = document.getElementById("phone").value;
-    const wilaya = document.getElementById("wilaya").value;
-    const city = document.getElementById("city").value;
-    const delivery = document.getElementById("deliveryType").value === "home" ? "إلى المنزل" : "إلى المكتب";
-    const shipping = shippingPrices[wilaya]?.[delivery === "إلى المنزل" ? 0 : 1] || 0;
-    const total = quantity * pricePerItem + shipping;
+      const msg = `طلب مروحة:\n👤 الاسم: ${name}\n📞 الهاتف: ${phone}\n📍 الولاية: ${wilaya}\n🏘️ البلدية: ${city}\n📦 نوع التوصيل: ${delivery}\n🔢 الكمية: ${quantity}\n💰 السعر الإجمالي: ${total} دج`;
+      const whatsappLink = `https://wa.me/213791418040?text=${encodeURIComponent(msg)}`;
+      window.open(whatsappLink, '_blank');
+    }
 
-    const msg = طلب مروحة\nالاسم: ${name}\nالهاتف: ${phone}\nالولاية: ${wilaya}\nالبلدية: ${city}\nالكمية: ${quantity}\nنوع التوصيل: ${delivery}\nالسعر الإجمالي: ${total} دج;
+    document.getElementById("orderForm").addEventListener("submit", sendWhatsAppMessage);
+    document.querySelectorAll("#fullName, #phone, #wilaya, #city, #deliveryType").forEach(el => {
+      el.addEventListener("input", updatePrice);
+    });
 
-    const whatsappLink = https://wa.me/213791418040?text=${encodeURIComponent(msg)};
-    window.open(whatsappLink, '_blank');
-  }
-
-  document.querySelectorAll("#fullName, #phone, #wilaya, #city, #deliveryType").forEach(el => {
-    el.addEventListener("input", updatePrice);
+    window.updateQuantity = updateQuantity;
   });
 </script>
 </body>
